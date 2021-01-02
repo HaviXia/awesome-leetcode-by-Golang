@@ -30,7 +30,7 @@ import "strings"
 
 */
 
-// 解法1
+// 解法1 官方题解
 /*
 	思路及解法
 	需要判断字符与字符串之间是否恰好一一对应。即任意一个字符都对应着唯一的字符串，任意一个字符串也只被唯一的一个字符对应。在集合论中，这种关系被称为「双射」。
@@ -39,10 +39,10 @@ import "strings"
 
 	在实际代码中，我们枚举 pattern 中的每一个字符，利用双指针来均摊线性地找到该字符在 str 中对应的字符串。每次确定一个字符与字符串的组合，我们就检查是否出现冲突，最后我们再检查两字符串是否比较完毕即可。
 */
-func wordPattern(pattern string, s string) bool {
-	word2ch := map[string]byte{}
-	ch2word := map[byte]string{}
-	words := strings.Split(s, " ")
+func wordPattern1(pattern string, s string) bool {
+	word2ch := map[string]byte{}   // "dog" : 'a'
+	ch2word := map[byte]string{}   // 'a' : "dog"
+	words := strings.Split(s, " ") // "dog" "dog"
 	if len(pattern) != len(words) {
 		return false
 	}
